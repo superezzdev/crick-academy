@@ -194,7 +194,7 @@ export function AcademyFooter() {
             </Link>
             <span>•</span>
             <span className="flex items-center gap-1 text-emerald-400">
-              <span className="h-2 w-2 rounded-full bg-emerald-400 animate-pulse" />
+              <span className="h-2 w-2 rounded-full bg-emerald-400" />
               Admissions Active
             </span>
           </div>

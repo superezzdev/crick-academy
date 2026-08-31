@@ -55,7 +55,7 @@ export function AdmissionsHero({ onBookTrialClick }: AdmissionsHeroProps) {
             </div>
             <div className="text-left">
               <div className="flex items-center gap-2">
-                <span className="flex h-2 w-2 rounded-full bg-emerald-400 animate-ping" />
+                <span className="flex h-2 w-2 rounded-full bg-emerald-400" />
                 <span className="text-[10px] sm:text-xs font-black uppercase tracking-wider text-stump-gold">
                   RECENT MATCH HIGHLIGHT • SUMMER CUP 2026 FINAL
                 </span>
@@ -233,7 +233,7 @@ export function AdmissionsHero({ onBookTrialClick }: AdmissionsHeroProps) {
             </div>
 
             {/* Decorative Floating Badges */}
-            <div className="hidden sm:flex absolute -bottom-5 -left-5 bg-card border-2 border-pitch-green/40 shadow-xl rounded-2xl p-3 items-center gap-3 animate-in fade-in slide-in-from-bottom-2">
+            <div className="hidden sm:flex absolute -bottom-5 -left-5 bg-card border-2 border-pitch-green/40 shadow-xl rounded-2xl p-3 items-center gap-3">
               <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-emerald-500/10 text-emerald-600 dark:text-emerald-400">
                 <ShieldCheck className="h-5 w-5" />
               </div>

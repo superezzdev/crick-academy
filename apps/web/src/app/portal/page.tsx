@@ -136,7 +136,7 @@ function StudentPortalContent() {
 
         {/* Dynamic Tab Content */}
         {activeTab === "overview" && (
-          <div className="space-y-12 animate-in fade-in-50 duration-300">
+          <div className="space-y-12">
             {/* 2-Column Responsive Layout */}
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
               {/* Left Column: Fee Ledger & Net Sessions (6 cols) */}
@@ -171,7 +171,7 @@ function StudentPortalContent() {
         )}
 
         {activeTab === "profile" && (
-          <div className="space-y-8 animate-in fade-in-50 duration-300">
+          <div className="space-y-8">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               {/* Personal Details Card */}
               <div className="rounded-2xl border-2 border-border/80 bg-card p-6 shadow-sm space-y-4">
@@ -304,7 +304,7 @@ function StudentPortalContent() {
         )}
 
         {activeTab === "fees" && (
-          <div className="animate-in fade-in-50 duration-300">
+          <div>
             <PortalFeeLedger
               fees={student.fees}
               studentName={student.name}
@@ -315,7 +315,7 @@ function StudentPortalContent() {
         )}
 
         {activeTab === "performance" && (
-          <div className="animate-in fade-in-50 duration-300">
+          <div>
             <PortalPerformanceHistory
               student={student}
               careerSummary={careerSummary}
@@ -324,7 +324,7 @@ function StudentPortalContent() {
         )}
 
         {activeTab === "sessions" && (
-          <div className="animate-in fade-in-50 duration-300">
+          <div>
             <PortalNetSessions
               sessions={sessions}
               studentName={student.name}
@@ -333,7 +333,7 @@ function StudentPortalContent() {
         )}
 
         {activeTab === "tournament" && (
-          <div className="animate-in fade-in-50 duration-300">
+          <div>
             <PortalTournamentContribution
               contribution={tournamentContribution}
               studentName={student.name}
@@ -351,7 +351,7 @@ export default function StudentPortalPage() {
       fallback={
         <div className="container mx-auto px-4 py-16 text-center">
           <div className="flex items-center justify-center gap-2">
-            <span className="h-4 w-4 rounded-full bg-pitch-green animate-ping" />
+            <span className="h-3 w-3 rounded-full bg-pitch-green" />
             <p className="font-heading text-lg font-bold text-pitch-green">
               Loading Player Locker Room...
             </p>

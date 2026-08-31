@@ -49,11 +49,31 @@ export function UpcomingSessionsCard({ sessions }: UpcomingSessionsCardProps) {
   if (!currentSession) {
     return (
       <Card className="h-full border-border/80 shadow-md">
-        <CardHeader>
-          <CardTitle>UPCOMING NET SESSIONS</CardTitle>
+        <CardHeader className="pb-2">
+          <div className="flex items-center gap-2">
+            <div className="flex h-7 w-7 items-center justify-center rounded-lg bg-chalk-200/80 text-pitch-green dark:bg-pitch-green-950 dark:text-stump-gold">
+              <CalendarDays className="h-4 w-4" />
+            </div>
+            <CardTitle className="text-xl">UPCOMING NET SESSIONS</CardTitle>
+          </div>
         </CardHeader>
-        <CardContent className="py-8 text-center text-muted-foreground">
-          No upcoming net sessions scheduled.
+        <CardContent className="py-12 flex flex-col items-center justify-center text-center space-y-3">
+          <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-chalk-200/80 text-pitch-green dark:bg-pitch-green-950 dark:text-stump-gold">
+            <CalendarDays className="h-6 w-6" />
+          </div>
+          <div className="space-y-1 max-w-xs">
+            <p className="font-heading text-lg font-bold text-foreground">
+              No Net Sessions Scheduled
+            </p>
+            <p className="text-xs text-muted-foreground leading-relaxed">
+              There are currently no upcoming turf or astro net practice slots open. New session slots can be scheduled from the coaching console.
+            </p>
+          </div>
+          <Link href="/coach">
+            <Button variant="pitch" size="sm" className="text-xs font-bold shadow-sm mt-1">
+              Open Coach Console
+            </Button>
+          </Link>
         </CardContent>
       </Card>
     );

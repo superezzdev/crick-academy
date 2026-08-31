@@ -208,8 +208,41 @@ export default function StudentsDirectoryPage() {
             <TableBody>
               {students.length === 0 ? (
                 <TableRow>
-                  <TableCell colSpan={7} className="text-center py-12 text-muted-foreground">
-                    No students found matching your search.
+                  <TableCell colSpan={7} className="py-12">
+                    <div className="flex flex-col items-center justify-center text-center space-y-3 max-w-md mx-auto">
+                      <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-chalk-200/80 text-pitch-green dark:bg-pitch-green-950 dark:text-stump-gold">
+                        <Users className="h-6 w-6" />
+                      </div>
+                      <div className="space-y-1">
+                        <p className="font-heading text-lg font-bold text-foreground">
+                          No student athletes found
+                        </p>
+                        <p className="text-xs text-muted-foreground leading-relaxed">
+                          {search || selectedBatch !== "ALL"
+                            ? `No enrolled players matched "${search || selectedBatch}". Try resetting your search filters or register a new academy student.`
+                            : "No student athletes have been registered yet. Begin by enrolling your first batch of players."}
+                        </p>
+                      </div>
+                      <div className="flex flex-wrap items-center justify-center gap-2 pt-2">
+                        {(search || selectedBatch !== "ALL") && (
+                          <Button
+                            variant="outline"
+                            size="sm"
+                            onClick={() => {
+                              setSearch("");
+                              setSelectedBatch("ALL");
+                            }}
+                            className="text-xs font-semibold"
+                          >
+                            Reset Filters
+                          </Button>
+                        )}
+                        <Button variant="pitch" size="sm" className="gap-1 text-xs font-bold shadow-sm">
+                          <UserPlus className="h-3.5 w-3.5 text-stump-gold" />
+                          Enroll Student
+                        </Button>
+                      </div>
+                    </div>
                   </TableCell>
                 </TableRow>
               ) : (

@@ -59,11 +59,8 @@ export function TournamentDetailView({
     switch (status) {
       case "ONGOING":
         return (
-          <span className="inline-flex items-center gap-1.5 rounded-full border border-amber-500/40 bg-amber-500/15 px-3 py-1 text-xs font-bold text-amber-700 dark:text-amber-400">
-            <span className="relative flex h-2 w-2">
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-amber-400 opacity-75"></span>
-              <span className="relative inline-flex rounded-full h-2 w-2 bg-amber-500"></span>
-            </span>
+          <span className="inline-flex items-center gap-1.5 rounded-full border border-amber-500/40 bg-amber-500/15 px-3 py-1 text-xs font-bold text-amber-800 dark:text-amber-300">
+            <span className="h-2 w-2 rounded-full bg-amber-500" />
             LIVE ONGOING LEAGUE
           </span>
         );
@@ -76,8 +73,8 @@ export function TournamentDetailView({
         );
       case "UPCOMING":
         return (
-          <span className="inline-flex items-center gap-1.5 rounded-full border border-blue-500/30 bg-blue-500/15 px-3 py-1 text-xs font-bold text-blue-700 dark:text-blue-400">
-            <Clock className="h-3.5 w-3.5" />
+          <span className="inline-flex items-center gap-1.5 rounded-full border border-border/80 bg-chalk-200/80 dark:bg-pitch-green-950/60 px-3 py-1 text-xs font-bold text-ink/80 dark:text-chalk/80">
+            <Clock className="h-3.5 w-3.5 text-muted-foreground" />
             UPCOMING EVENT
           </span>
         );

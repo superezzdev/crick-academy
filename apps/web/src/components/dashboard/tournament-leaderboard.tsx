@@ -56,14 +56,23 @@ export function TournamentLeaderboard({
   if (!hasData) {
     return (
       <Card className="border-dashed border-2 border-border/80 py-16 text-center">
-        <CardContent className="space-y-3">
-          <div className="inline-flex h-12 w-12 items-center justify-center rounded-full bg-stump-gold/20 text-stump-gold">
+        <CardContent className="space-y-4 max-w-md mx-auto">
+          <div className="inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-chalk-200/80 text-pitch-green dark:bg-pitch-green-950 dark:text-stump-gold">
             <Trophy className="h-6 w-6" />
           </div>
-          <h3 className="font-heading text-xl font-bold">Tournament Leaderboard Pending</h3>
-          <p className="text-xs text-muted-foreground max-w-md mx-auto">
-            Matches for this tournament have not commenced yet. Live leaderboards will be dynamically computed as soon as fixtures are completed and player performance stats are recorded.
-          </p>
+          <div className="space-y-1">
+            <h3 className="font-heading text-xl font-bold">Tournament Leaderboard Pending</h3>
+            <p className="text-xs text-muted-foreground leading-relaxed">
+              Matches for this tournament have not commenced yet. Live leaderboards will be dynamically computed as soon as fixtures are completed and player performance stats are recorded.
+            </p>
+          </div>
+          <div className="pt-2">
+            <Link href="/dashboard/tournaments">
+              <Button variant="pitch" size="sm" className="text-xs font-bold shadow-sm">
+                View Tournament Schedule
+              </Button>
+            </Link>
+          </div>
         </CardContent>
       </Card>
     );
@@ -80,7 +89,7 @@ export function TournamentLeaderboard({
     }
     if (rank === 2) {
       return (
-        <span className="inline-flex items-center gap-1 rounded-full bg-slate-300 dark:bg-slate-700 px-2 py-0.5 text-xs font-bold text-slate-900 dark:text-slate-100">
+        <span className="inline-flex items-center gap-1 rounded-full bg-chalk-200 dark:bg-stone-800 border border-border px-2 py-0.5 text-xs font-bold text-foreground">
           <Medal className="h-3 w-3" />
           #2 SILVER
         </span>
@@ -88,7 +97,7 @@ export function TournamentLeaderboard({
     }
     if (rank === 3) {
       return (
-        <span className="inline-flex items-center gap-1 rounded-full bg-amber-800/20 dark:bg-amber-900/40 border border-amber-700/40 px-2 py-0.5 text-xs font-bold text-amber-800 dark:text-amber-300">
+        <span className="inline-flex items-center gap-1 rounded-full bg-chalk-100 dark:bg-stone-900 border border-border/80 px-2 py-0.5 text-xs font-bold text-muted-foreground">
           <Medal className="h-3 w-3" />
           #3 BRONZE
         </span>

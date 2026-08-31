@@ -35,7 +35,7 @@ export function HeroSection() {
         {/* Live Academy Status Badge */}
         <div className="flex flex-wrap items-center justify-center gap-3 mb-6">
           <div className="inline-flex items-center gap-2 rounded-full border border-pitch-green/25 bg-chalk-100/90 dark:bg-pitch-green-950/80 px-4 py-1.5 text-xs font-bold shadow-xs">
-            <span className="flex h-2.5 w-2.5 rounded-full bg-emerald-500 animate-ping" />
+            <span className="flex h-2.5 w-2.5 rounded-full bg-emerald-500" />
             <span className="text-pitch-green dark:text-stump-gold font-heading tracking-wider uppercase">
               LIVE ACADEMY OPS
             </span>
