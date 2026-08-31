@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <rect width="512" height="512" rx="96" fill="#0B3D2E"/>
+  <circle cx="256" cy="256" r="180" fill="#F5F1E6"/>
+  <!-- Cricket Stumps -->
+  <rect x="195" y="150" width="18" height="175" rx="8" fill="#E8C468"/>
+  <rect x="247" y="140" width="18" height="185" rx="8" fill="#E8C468"/>
+  <rect x="299" y="150" width="18" height="175" rx="8" fill="#E8C468"/>
+  <!-- Bails -->
+  <rect x="185" y="140" width="70" height="12" rx="5" fill="#E8C468"/>
+  <rect x="257" y="140" width="70" height="12" rx="5" fill="#E8C468"/>
+  <!-- Cricket Ball -->
+  <circle cx="325" cy="315" r="42" fill="#C1121F"/>
+  <path d="M295 315 Q325 285 355 315" stroke="#F5F1E6" stroke-width="4" fill="none" stroke-dasharray="4 4"/>
+</svg>

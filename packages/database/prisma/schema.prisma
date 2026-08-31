@@ -1,0 +1,189 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")
+  directUrl = env("DIRECT_URL")
+}
+
+enum BattingStyle {
+  RIGHT_HAND
+  LEFT_HAND
+}
+
+enum BowlingStyle {
+  RIGHT_ARM_FAST
+  RIGHT_ARM_MEDIUM
+  RIGHT_ARM_SPIN_OFF
+  RIGHT_ARM_SPIN_LEG
+  LEFT_ARM_FAST
+  LEFT_ARM_MEDIUM
+  LEFT_ARM_SPIN_ORTHODOX
+  LEFT_ARM_SPIN_CHINAMAN
+  NONE
+}
+
+enum PaymentStatus {
+  PAID
+  UNPAID
+  OVERDUE
+}
+
+enum PaymentType {
+  MONTHLY
+  MATCH
+  TOURNAMENT
+}
+
+enum TournamentStatus {
+  UPCOMING
+  ONGOING
+  COMPLETED
+  CANCELLED
+}
+
+enum MatchResult {
+  WON
+  LOST
+  DRAW
+  TIED
+  ABANDONED
+  PENDING
+}
+
+model Student {
+  id            String       @id @default(cuid())
+  name          String
+  photoUrl      String?
+  dateOfBirth   DateTime
+  phone         String
+  guardianPhone String
+  battingStyle  BattingStyle @default(RIGHT_HAND)
+  bowlingStyle  BowlingStyle @default(NONE)
+  joinedDate    DateTime     @default(now())
+  batch         String       // e.g. "Morning Elite", "Evening Juniors"
+
+  // Relations
+  feePayments          FeePayment[]
+  sessionRegistrations SessionRegistration[]
+  performances         PlayerPerformance[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([batch])
+  @@index([name])
+}
+
+model FeePayment {
+  id        String        @id @default(cuid())
+  studentId String
+  amount    Float
+  paidOn    DateTime?
+  dueDate   DateTime
+  status    PaymentStatus @default(UNPAID)
+  method    String?       // UPI, CASH, BANK_TRANSFER, etc.
+  proofUrl  String?
+  type      PaymentType   @default(MONTHLY)
+
+  // Relations
+  student Student @relation(fields: [studentId], references: [id], onDelete: Cascade)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([studentId])
+  @@index([status])
+  @@index([dueDate])
+}
+
+model NetSession {
+  id        String   @id @default(cuid())
+  date      DateTime
+  time      String   // e.g. "06:30 AM - 08:30 AM"
+  capacity  Int      @default(12)
+  feeAmount Float    @default(0)
+
+  // Relations
+  registrations SessionRegistration[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([date])
+}
+
+model SessionRegistration {
+  id        String  @id @default(cuid())
+  sessionId String
+  studentId String
+  paid      Boolean @default(false)
+
+  // Relations
+  session NetSession @relation(fields: [sessionId], references: [id], onDelete: Cascade)
+  student Student    @relation(fields: [studentId], references: [id], onDelete: Cascade)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@unique([sessionId, studentId])
+  @@index([sessionId])
+  @@index([studentId])
+}
+
+model Tournament {
+  id        String           @id @default(cuid())
+  name      String
+  startDate DateTime
+  endDate   DateTime
+  status    TournamentStatus @default(UPCOMING)
+
+  // Relations
+  matches Match[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([status])
+  @@index([startDate])
+}
+
+model Match {
+  id           String       @id @default(cuid())
+  tournamentId String
+  opponent     String
+  date         DateTime
+  result       MatchResult? @default(PENDING)
+
+  // Relations
+  tournament   Tournament          @relation(fields: [tournamentId], references: [id], onDelete: Cascade)
+  performances PlayerPerformance[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([tournamentId])
+  @@index([date])
+}
+
+model PlayerPerformance {
+  id        String  @id @default(cuid())
+  matchId   String
+  studentId String
+  runs      Int     @default(0)
+  wickets   Int     @default(0)
+  catches   Int     @default(0)
+  notes     String?
+
+  // Relations
+  match   Match   @relation(fields: [matchId], references: [id], onDelete: Cascade)
+  student Student @relation(fields: [studentId], references: [id], onDelete: Cascade)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([matchId])
+  @@index([studentId])
+}

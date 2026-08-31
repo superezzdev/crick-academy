@@ -1,0 +1,108 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Cricket Academy Core Design Tokens */
+    --pitch-green: #0B3D2E;
+    --chalk: #F5F1E6;
+    --leather-red: #C1121F;
+    --ink: #1A1A1A;
+    --stump-gold: #E8C468;
+
+    /* Theme tokens in HSL for shadcn compatibility */
+    --background: 43 38% 95%; /* Chalk #F5F1E6 tone */
+    --foreground: 0 0% 10%;   /* Ink #1A1A1A */
+
+    --card: 0 0% 100%;
+    --card-foreground: 0 0% 10%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 0% 10%;
+
+    --primary: 162 69% 14%; /* Pitch Green #0B3D2E */
+    --primary-foreground: 43 38% 95%;
+
+    --secondary: 43 35% 88%;
+    --secondary-foreground: 162 69% 14%;
+
+    --muted: 43 20% 90%;
+    --muted-foreground: 0 0% 40%;
+
+    --accent: 43 74% 66%; /* Stump Gold #E8C468 */
+    --accent-foreground: 0 0% 10%;
+
+    --destructive: 356 83% 41%; /* Leather Red #C1121F */
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 43 20% 82%;
+    --input: 43 20% 82%;
+    --ring: 162 69% 14%;
+
+    --radius: 0.75rem;
+  }
+
+  .dark {
+    --background: 162 45% 6%; /* Deep pitch dark */
+    --foreground: 43 38% 95%;
+
+    --card: 162 40% 9%;
+    --card-foreground: 43 38% 95%;
+
+    --popover: 162 40% 9%;
+    --popover-foreground: 43 38% 95%;
+
+    --primary: 43 74% 66%; /* Stump Gold as primary in dark mode */
+    --primary-foreground: 162 69% 14%;
+
+    --secondary: 162 30% 15%;
+    --secondary-foreground: 43 38% 95%;
+
+    --muted: 162 25% 15%;
+    --muted-foreground: 43 15% 70%;
+
+    --accent: 162 69% 22%;
+    --accent-foreground: 43 38% 95%;
+
+    --destructive: 356 83% 41%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 162 25% 18%;
+    --input: 162 25% 18%;
+    --ring: 43 74% 66%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground font-sans antialiased min-h-screen selection:bg-stump-gold selection:text-ink;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-heading tracking-wide uppercase;
+  }
+}
+
+/* Custom Cricket Aesthetic Utilities */
+.cricket-turf-gradient {
+  background: linear-gradient(135deg, #0B3D2E 0%, #06231a 100%);
+}
+
+.gold-shimmer {
+  background: linear-gradient(90deg, #E8C468 0%, #fae6a8 50%, #E8C468 100%);
+}
+
+.glass-card {
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+.dark .glass-card {
+  background: rgba(11, 61, 46, 0.65);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
