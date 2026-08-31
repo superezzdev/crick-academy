@@ -82,10 +82,34 @@ export function UpcomingSessions() {
         </Button>
       </CardHeader>
       <CardContent className="space-y-4">
-        {sessions.map((sess) => {
-          const isRegistered = registeredIds.includes(sess.id);
-          const isFull = sess.bookedCount >= sess.capacity && !isRegistered;
-          const slotsLeft = Math.max(0, sess.capacity - sess.bookedCount);
+        {sessions.length === 0 ? (
+          <div className="py-12 flex flex-col items-center justify-center text-center space-y-3">
+            <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-chalk-200/80 text-pitch-green dark:bg-pitch-green-950 dark:text-stump-gold">
+              <Clock className="h-6 w-6" />
+            </div>
+            <div className="space-y-1 max-w-xs">
+              <p className="font-heading text-lg font-bold text-foreground">
+                No Practice Slots Scheduled
+              </p>
+              <p className="text-xs text-muted-foreground leading-relaxed">
+                There are currently no net practice sessions open for registration. Add a new slot to get started.
+              </p>
+            </div>
+            <Button
+              variant="pitch"
+              size="sm"
+              onClick={() => setSessions(mockSessions)}
+              className="text-xs font-bold shadow-sm mt-1"
+            >
+              <Plus className="h-3.5 w-3.5 mr-1" />
+              Add Practice Slot
+            </Button>
+          </div>
+        ) : (
+          sessions.map((sess) => {
+            const isRegistered = registeredIds.includes(sess.id);
+            const isFull = sess.bookedCount >= sess.capacity && !isRegistered;
+            const slotsLeft = Math.max(0, sess.capacity - sess.bookedCount);
 
           return (
             <div
@@ -146,7 +170,7 @@ export function UpcomingSessions() {
               </div>
             </div>
           );
-        })}
+        }))}
       </CardContent>
     </Card>
   );

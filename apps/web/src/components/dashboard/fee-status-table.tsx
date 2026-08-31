@@ -176,8 +176,35 @@ export function FeeStatusTable({ initialFees }: FeeStatusTableProps) {
             <TableBody>
               {filteredFees.length === 0 ? (
                 <TableRow>
-                  <TableCell colSpan={5} className="text-center py-8 text-muted-foreground">
-                    No fee records match the selected filter.
+                  <TableCell colSpan={5} className="py-10">
+                    <div className="flex flex-col items-center justify-center text-center space-y-2.5 max-w-sm mx-auto">
+                      <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-chalk-200/80 text-pitch-green dark:bg-pitch-green-950 dark:text-stump-gold">
+                        <CreditCard className="h-5 w-5" />
+                      </div>
+                      <div className="space-y-0.5">
+                        <p className="font-heading text-base font-bold text-foreground">
+                          No fee records found
+                        </p>
+                        <p className="text-xs text-muted-foreground leading-relaxed">
+                          {search || filter !== "ALL"
+                            ? "No dues or receipts matched your current filter criteria."
+                            : "No student fee records are currently logged."}
+                        </p>
+                      </div>
+                      {(search || filter !== "ALL") && (
+                        <Button
+                          variant="outline"
+                          size="sm"
+                          onClick={() => {
+                            setFilter("ALL");
+                            setSearch("");
+                          }}
+                          className="h-8 text-xs font-semibold mt-1"
+                        >
+                          Show All Fee Records
+                        </Button>
+                      )}
+                    </div>
                   </TableCell>
                 </TableRow>
               ) : (

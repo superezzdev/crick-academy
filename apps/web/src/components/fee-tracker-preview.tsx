@@ -102,7 +102,30 @@ export function FeeTrackerPreview() {
         </Button>
       </CardHeader>
       <CardContent className="space-y-3">
-        {fees.map((fee) => (
+        {fees.length === 0 ? (
+          <div className="py-12 flex flex-col items-center justify-center text-center space-y-3 max-w-sm mx-auto">
+            <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-chalk-200/80 text-pitch-green dark:bg-pitch-green-950 dark:text-stump-gold">
+              <CreditCard className="h-6 w-6" />
+            </div>
+            <div className="space-y-1">
+              <p className="font-heading text-lg font-bold text-foreground">
+                No Invoices Pending
+              </p>
+              <p className="text-xs text-muted-foreground leading-relaxed">
+                All membership fees and session subscriptions are fully reconciled.
+              </p>
+            </div>
+            <Button
+              variant="pitch"
+              size="sm"
+              onClick={() => setFees(mockFees)}
+              className="text-xs font-bold shadow-sm mt-1"
+            >
+              Reset Demo Records
+            </Button>
+          </div>
+        ) : (
+          fees.map((fee) => (
           <div
             key={fee.id}
             className="flex items-center justify-between p-3.5 rounded-lg border border-border/60 bg-card hover:bg-chalk-50/50 transition-colors"
@@ -143,7 +166,7 @@ export function FeeTrackerPreview() {
               )}
             </div>
           </div>
-        ))}
+        )))}
       </CardContent>
     </Card>
   );

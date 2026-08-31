@@ -215,8 +215,18 @@ export function PortalTournamentContribution({
                 </div>
               </div>
             ) : (
-              <div className="py-8 text-center text-muted-foreground text-xs">
-                No active fixture scheduled this week. Check back for tournament quarter-finals.
+              <div className="py-10 flex flex-col items-center justify-center text-center space-y-2.5 max-w-xs mx-auto">
+                <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-chalk-200/80 text-pitch-green dark:bg-pitch-green-950 dark:text-stump-gold">
+                  <Calendar className="h-5 w-5" />
+                </div>
+                <div className="space-y-0.5">
+                  <p className="font-heading text-sm font-bold text-foreground">
+                    No Fixture This Week
+                  </p>
+                  <p className="text-xs text-muted-foreground leading-relaxed">
+                    No upcoming match scheduled for this week. Quarter-final and playoff dates will be published soon.
+                  </p>
+                </div>
               </div>
             )}
           </CardContent>
@@ -245,8 +255,18 @@ export function PortalTournamentContribution({
         </CardHeader>
         <CardContent>
           {standoutPerformances.length === 0 ? (
-            <div className="py-8 text-center text-muted-foreground text-xs">
-              No standout milestones logged yet.
+            <div className="py-10 flex flex-col items-center justify-center text-center space-y-2.5 max-w-sm mx-auto">
+              <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-chalk-200/80 text-pitch-green dark:bg-pitch-green-950 dark:text-stump-gold">
+                <Award className="h-5 w-5" />
+              </div>
+              <div className="space-y-0.5">
+                <p className="font-heading text-sm font-bold text-foreground">
+                  No Milestone Knocks Logged Yet
+                </p>
+                <p className="text-xs text-muted-foreground leading-relaxed">
+                  Player of the match awards and key turning-point performances will be celebrated here after competitive games.
+                </p>
+              </div>
             </div>
           ) : (
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -297,7 +317,7 @@ export function PortalTournamentContribution({
                     </div>
                     <div>
                       <span className="text-[9px] uppercase font-bold text-muted-foreground">Catches</span>
-                      <p className="font-heading text-lg font-black text-sky-600 dark:text-sky-400">
+                      <p className="font-heading text-lg font-black text-pitch-green dark:text-chalk">
                         {standout.catches}
                       </p>
                     </div>

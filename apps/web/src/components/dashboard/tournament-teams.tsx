@@ -32,14 +32,23 @@ export function TournamentTeams({ teams }: TournamentTeamsProps) {
   if (teams.length === 0) {
     return (
       <Card className="border-dashed border-2 border-border/80 py-16 text-center">
-        <CardContent className="space-y-3">
-          <div className="inline-flex h-12 w-12 items-center justify-center rounded-full bg-muted text-muted-foreground">
+        <CardContent className="space-y-4 max-w-sm mx-auto">
+          <div className="inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-chalk-200/80 text-pitch-green dark:bg-pitch-green-950 dark:text-stump-gold">
             <Users className="h-6 w-6" />
           </div>
-          <h3 className="font-heading text-xl font-bold">No Teams Registered</h3>
-          <p className="text-xs text-muted-foreground max-w-sm mx-auto">
-            Team squads have not been assigned for this tournament yet.
-          </p>
+          <div className="space-y-1">
+            <h3 className="font-heading text-xl font-bold">No Teams Registered</h3>
+            <p className="text-xs text-muted-foreground leading-relaxed">
+              Team squads have not been assigned for this tournament yet. Rosters are being prepared by the coaches.
+            </p>
+          </div>
+          <div className="pt-2">
+            <Link href="/dashboard/tournaments">
+              <Button variant="pitch" size="sm" className="text-xs font-bold shadow-sm">
+                Explore Tournaments Hub
+              </Button>
+            </Link>
+          </div>
         </CardContent>
       </Card>
     );

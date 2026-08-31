@@ -241,7 +241,7 @@ export function PortalStudentHero({
 
             <div className="sm:border-l border-chalk/15 sm:pl-4">
               <p className="text-[10px] uppercase font-bold text-chalk/60">Catches / Dismissals</p>
-              <p className="font-heading text-2xl sm:text-3xl font-black text-sky-400 mt-0.5">
+              <p className="font-heading text-2xl sm:text-3xl font-black text-chalk mt-0.5">
                 {careerSummary.totalCatches}
               </p>
               <p className="text-[10px] text-chalk/70">Fielding Impact</p>

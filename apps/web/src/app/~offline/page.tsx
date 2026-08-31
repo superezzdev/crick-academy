@@ -17,11 +17,8 @@ export default function OfflineFallbackPage() {
       <div className="w-full max-w-md bg-white/5 backdrop-blur-xl border border-white/10 rounded-3xl p-6 sm:p-8 text-center shadow-2xl space-y-6">
         {/* Offline Badge & Icon */}
         <div className="relative mx-auto w-24 h-24 flex items-center justify-center rounded-3xl bg-[#0B3D2E] border-2 border-[#E8C468]/40 shadow-inner">
-          <WifiOff className="w-12 h-12 text-[#E8C468] animate-pulse" />
-          <span className="absolute -top-1 -right-1 flex h-4 w-4">
-            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#C1121F] opacity-75"></span>
-            <span className="relative inline-flex rounded-full h-4 w-4 bg-[#C1121F]"></span>
-          </span>
+          <WifiOff className="w-12 h-12 text-[#E8C468]" />
+          <span className="absolute -top-1 -right-1 flex h-3.5 w-3.5 rounded-full bg-[#C1121F] ring-2 ring-[#0B3D2E]" />
         </div>
 
         {/* Heading & Information */}

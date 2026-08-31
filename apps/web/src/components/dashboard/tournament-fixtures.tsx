@@ -75,14 +75,23 @@ export function TournamentFixtures({ fixtures }: TournamentFixturesProps) {
   if (fixtures.length === 0) {
     return (
       <Card className="border-dashed border-2 border-border/80 py-16 text-center">
-        <CardContent className="space-y-3">
-          <div className="inline-flex h-12 w-12 items-center justify-center rounded-full bg-muted text-muted-foreground">
+        <CardContent className="space-y-4 max-w-sm mx-auto">
+          <div className="inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-chalk-200/80 text-pitch-green dark:bg-pitch-green-950 dark:text-stump-gold">
             <Swords className="h-6 w-6" />
           </div>
-          <h3 className="font-heading text-xl font-bold">No Fixtures Scheduled</h3>
-          <p className="text-xs text-muted-foreground max-w-sm mx-auto">
-            Tournament fixtures are currently being drawn by academy coaches. Check back soon for schedule updates.
-          </p>
+          <div className="space-y-1">
+            <h3 className="font-heading text-xl font-bold">No Fixtures Scheduled</h3>
+            <p className="text-xs text-muted-foreground leading-relaxed">
+              Tournament fixtures are currently being drawn by academy coaches. Check back soon for schedule updates.
+            </p>
+          </div>
+          <div className="pt-2">
+            <Link href="/dashboard/tournaments">
+              <Button variant="pitch" size="sm" className="text-xs font-bold shadow-sm">
+                Explore Tournaments Hub
+              </Button>
+            </Link>
+          </div>
         </CardContent>
       </Card>
     );
@@ -98,11 +107,7 @@ export function TournamentFixtures({ fixtures }: TournamentFixturesProps) {
         return (
           <Card
             key={match.id}
-            className={`border transition-all ${
-              isCompleted
-                ? "border-border/80 hover:border-pitch-green/60"
-                : "border-blue-500/30 bg-blue-500/5 hover:border-blue-500/60"
-            }`}
+            className="border border-border/80 bg-card hover:border-pitch-green/60 transition-all"
           >
             {/* 1. Fixture Header */}
             <CardHeader className="pb-3 border-b border-border/50 bg-chalk-50/40 dark:bg-pitch-green-950/20">

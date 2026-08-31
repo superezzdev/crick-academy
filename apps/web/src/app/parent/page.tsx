@@ -64,7 +64,7 @@ export default function ParentPortalPage() {
           </Link>
 
           <div className="flex items-center gap-2">
-            <span className="flex h-2 w-2 rounded-full bg-emerald-500 animate-pulse" />
+            <span className="flex h-2 w-2 rounded-full bg-emerald-500" />
             <span className="text-xs font-bold text-emerald-600 dark:text-emerald-400">
               Verified Guardian Link Active
             </span>

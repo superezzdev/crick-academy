@@ -58,7 +58,7 @@ export function ScoreboardHero({
       <div className="relative z-10 flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-stump-gold/20 pb-4">
         <div className="flex items-center gap-3">
           <div className="flex h-7 items-center gap-1.5 rounded-full bg-stump-gold/15 px-3 py-1 text-[11px] font-bold tracking-widest text-stump-gold uppercase ring-1 ring-stump-gold/30">
-            <Radio className="h-3 w-3 animate-pulse text-stump-gold" />
+            <Radio className="h-3 w-3 text-stump-gold" />
             <span>STADIUM LIVE SCOREBOARD</span>
           </div>
           <span className="hidden sm:inline-block text-xs text-chalk/60 font-mono">

@@ -263,7 +263,38 @@ export function PortalFeeLedger({
                 </TableRow>
               </TableHeader>
               <TableBody>
-                {filteredFees.map((fee) => {
+                {filteredFees.length === 0 ? (
+                  <TableRow>
+                    <TableCell colSpan={6} className="py-10">
+                      <div className="flex flex-col items-center justify-center text-center space-y-2.5 max-w-sm mx-auto">
+                        <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-chalk-200/80 text-pitch-green dark:bg-pitch-green-950 dark:text-stump-gold">
+                          <CreditCard className="h-5 w-5" />
+                        </div>
+                        <div className="space-y-0.5">
+                          <p className="font-heading text-base font-bold text-foreground">
+                            {statusFilter === "PENDING" ? "All Fees Cleared" : "No Invoices Found"}
+                          </p>
+                          <p className="text-xs text-muted-foreground leading-relaxed">
+                            {statusFilter === "PENDING"
+                              ? "Great news! No pending dues are outstanding for this account."
+                              : "No payment records match your active filter tab."}
+                          </p>
+                        </div>
+                        {statusFilter !== "ALL" && (
+                          <Button
+                            variant="outline"
+                            size="sm"
+                            onClick={() => setStatusFilter("ALL")}
+                            className="h-8 text-xs font-semibold mt-1"
+                          >
+                            View All Invoices
+                          </Button>
+                        )}
+                      </div>
+                    </TableCell>
+                  </TableRow>
+                ) : (
+                  filteredFees.map((fee) => {
                   const monthLabel = fee.dueDate.toString().includes("2026-06")
                     ? "June 2026"
                     : fee.dueDate.toString().includes("2026-07")
@@ -343,7 +374,7 @@ export function PortalFeeLedger({
                       </TableCell>
                     </TableRow>
                   );
-                })}
+                }))}
               </TableBody>
             </Table>
           </div>

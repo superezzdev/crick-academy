@@ -100,20 +100,47 @@ export function PortalNetSessions({
       </div>
 
       {/* Sessions Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-        {sessions.map((session) => {
-          const isFull = session.registeredCount >= session.capacity && !session.isRegistered;
-          const slotsLeft = Math.max(0, session.capacity - session.registeredCount);
+      {sessions.length === 0 ? (
+        <Card className="border-dashed border-2 border-border/80 py-12 text-center">
+          <CardContent className="space-y-3 max-w-sm mx-auto">
+            <div className="inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-chalk-200/80 text-pitch-green dark:bg-pitch-green-950 dark:text-stump-gold">
+              <Calendar className="h-6 w-6" />
+            </div>
+            <div className="space-y-1">
+              <p className="font-heading text-lg font-bold text-foreground">
+                No Net Sessions Open
+              </p>
+              <p className="text-xs text-muted-foreground leading-relaxed">
+                There are currently no upcoming practice net slots available for booking. New schedules are updated weekly by the coaching staff.
+              </p>
+            </div>
+            <div className="pt-2">
+              <Button
+                variant="pitch"
+                size="sm"
+                onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+                className="text-xs font-bold shadow-sm"
+              >
+                Back to Top
+              </Button>
+            </div>
+          </CardContent>
+        </Card>
+      ) : (
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          {sessions.map((session) => {
+            const isFull = session.registeredCount >= session.capacity && !session.isRegistered;
+            const slotsLeft = Math.max(0, session.capacity - session.registeredCount);
 
-          return (
-            <Card
-              key={session.id}
-              className={`border-2 transition-all shadow-sm ${
-                session.isRegistered
-                  ? "border-emerald-500/50 bg-emerald-50/20 dark:bg-emerald-950/10"
-                  : "border-border/80 hover:border-pitch-green/40"
-              }`}
-            >
+            return (
+              <Card
+                key={session.id}
+                className={`border-2 transition-all shadow-sm ${
+                  session.isRegistered
+                    ? "border-emerald-500/50 bg-emerald-50/20 dark:bg-emerald-950/10"
+                    : "border-border/80 hover:border-pitch-green/40"
+                }`}
+              >
               <CardHeader className="pb-3">
                 <div className="flex items-start justify-between gap-3">
                   <div className="space-y-1">
@@ -202,6 +229,7 @@ export function PortalNetSessions({
           );
         })}
       </div>
+      )}
 
       {/* Session Booking Modal */}
       <PortalSessionModal

@@ -349,8 +349,23 @@ export function StudentProfileView({ student }: StudentProfileViewProps) {
             </CardHeader>
             <CardContent className="space-y-4">
               {student.performances.length === 0 ? (
-                <div className="py-8 text-center text-muted-foreground text-sm">
-                  No tournament match records logged yet for this player.
+                <div className="py-10 flex flex-col items-center justify-center text-center space-y-3 max-w-xs mx-auto">
+                  <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-chalk-200/80 text-pitch-green dark:bg-pitch-green-950 dark:text-stump-gold">
+                    <Trophy className="h-5 w-5" />
+                  </div>
+                  <div className="space-y-0.5">
+                    <p className="font-heading text-base font-bold text-foreground">
+                      No Tournament Matches Logged
+                    </p>
+                    <p className="text-xs text-muted-foreground leading-relaxed">
+                      Official match stats and coach notes will appear here once the player participates in tournament fixtures.
+                    </p>
+                  </div>
+                  <Link href="/dashboard/tournaments">
+                    <Button variant="pitch" size="sm" className="text-xs font-bold shadow-sm mt-1">
+                      View Tournaments Hub
+                    </Button>
+                  </Link>
                 </div>
               ) : (
                 student.performances.map((perf) => (

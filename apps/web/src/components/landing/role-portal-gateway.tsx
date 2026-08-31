@@ -206,7 +206,7 @@ export function RolePortalGateway() {
           </p>
 
           <div className="pt-2 flex items-center justify-center gap-2 text-xs font-semibold text-muted-foreground">
-            <span className="flex h-2 w-2 rounded-full bg-emerald-500 animate-pulse" />
+            <span className="flex h-2 w-2 rounded-full bg-emerald-500" />
             <span>Instant Demo Access Enabled • No Password Required in Demo</span>
           </div>
         </div>

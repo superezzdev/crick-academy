@@ -134,8 +134,31 @@ export function StudentSquadPreview() {
         </div>
       </CardHeader>
       <CardContent>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          {filteredStudents.map((student) => (
+        {filteredStudents.length === 0 ? (
+          <div className="py-12 flex flex-col items-center justify-center text-center space-y-3 max-w-sm mx-auto">
+            <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-chalk-200/80 text-pitch-green dark:bg-pitch-green-950 dark:text-stump-gold">
+              <Filter className="h-6 w-6" />
+            </div>
+            <div className="space-y-1">
+              <p className="font-heading text-lg font-bold text-foreground">
+                No Players in This Batch
+              </p>
+              <p className="text-xs text-muted-foreground leading-relaxed">
+                No athletes are registered in the selected training slot.
+              </p>
+            </div>
+            <Button
+              variant="outline"
+              size="sm"
+              onClick={() => setSelectedBatch("ALL")}
+              className="text-xs font-semibold mt-1"
+            >
+              Show All Squads
+            </Button>
+          </div>
+        ) : (
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            {filteredStudents.map((student) => (
             <div
               key={student.id}
               className="flex items-start gap-4 p-4 rounded-xl border border-border/60 bg-card hover:border-pitch-green/40 hover:shadow-md transition-all"
@@ -209,6 +232,7 @@ export function StudentSquadPreview() {
             </div>
           ))}
         </div>
+        )}
       </CardContent>
     </Card>
   );

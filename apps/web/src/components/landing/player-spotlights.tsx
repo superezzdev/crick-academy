@@ -50,7 +50,7 @@ export function PlayerSpotlights() {
       bowlingStyle: "Left-Arm Orthodox Spin",
       avatarFallback: "DR",
       badgeText: "Purple Cap Winner",
-      badgeColor: "bg-purple-600 text-chalk",
+      badgeColor: "bg-pitch-green text-chalk border border-pitch-green-600",
       keyStats: [
         { label: "Tournament Wickets", value: "7 Wickets" },
         { label: "SF Spell", value: "4/16 (4 overs)" },

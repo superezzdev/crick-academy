@@ -17,31 +17,7 @@ export function GsapDashboardHero() {
   const heroRef = useRef<HTMLDivElement>(null);
   const statsRef = useRef<HTMLDivElement>(null);
 
-  useEffect(() => {
-    const ctx = gsap.context(() => {
-      // Stagger animation for hero header and subtext
-      gsap.from(".hero-anim-item", {
-        y: 30,
-        opacity: 0,
-        duration: 0.8,
-        stagger: 0.15,
-        ease: "power3.out"
-      });
 
-      // Stagger animation for stat metric cards
-      gsap.from(".stat-card-anim", {
-        scale: 0.9,
-        y: 20,
-        opacity: 0,
-        duration: 0.6,
-        stagger: 0.1,
-        delay: 0.4,
-        ease: "back.out(1.4)"
-      });
-    }, heroRef);
-
-    return () => ctx.revert();
-  }, []);
 
   return (
     <div ref={heroRef} className="relative overflow-hidden py-8 lg:py-12">

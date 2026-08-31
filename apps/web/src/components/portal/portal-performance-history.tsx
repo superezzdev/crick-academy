@@ -1,6 +1,7 @@
 "use client";
 
 import React from "react";
+import Link from "next/link";
 import {
   Trophy,
   Award,
@@ -159,7 +160,7 @@ export function PortalPerformanceHistory({
             </div>
             <div className="rounded-xl bg-chalk-50 p-3 dark:bg-pitch-green-950/40">
               <span className="text-[10px] uppercase font-bold text-muted-foreground">Catches</span>
-              <p className="font-heading text-2xl font-black text-sky-600 dark:text-sky-400">
+              <p className="font-heading text-2xl font-black text-pitch-green dark:text-chalk">
                 {careerSummary.totalCatches}
               </p>
             </div>
@@ -204,9 +205,25 @@ export function PortalPerformanceHistory({
 
         <CardContent className="space-y-4">
           {student.performances.length === 0 ? (
-            <div className="py-12 text-center text-muted-foreground space-y-2">
-              <p className="text-sm font-semibold">No tournament match logs found yet.</p>
-              <p className="text-xs">Upcoming match records will be automatically updated here by the coaches.</p>
+            <div className="py-12 flex flex-col items-center justify-center text-center space-y-3 max-w-sm mx-auto">
+              <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-chalk-200/80 text-pitch-green dark:bg-pitch-green-950 dark:text-stump-gold">
+                <Trophy className="h-6 w-6" />
+              </div>
+              <div className="space-y-1">
+                <p className="font-heading text-lg font-bold text-foreground">
+                  No Tournament Matches Logged
+                </p>
+                <p className="text-xs text-muted-foreground leading-relaxed">
+                  Performance scorecards and coach assessments will appear here once official tournament matches are played.
+                </p>
+              </div>
+              <div className="pt-1">
+                <Link href="/dashboard/tournaments">
+                  <Button variant="pitch" size="sm" className="text-xs font-bold shadow-sm">
+                    View Tournament Hub
+                  </Button>
+                </Link>
+              </div>
             </div>
           ) : (
             student.performances.map((perf, index) => {

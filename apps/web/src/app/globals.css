@@ -78,6 +78,9 @@
   * {
     @apply border-border;
   }
+  *:focus-visible {
+    @apply outline-none ring-2 ring-pitch-green ring-offset-2 ring-offset-background dark:ring-stump-gold;
+  }
   body {
     @apply bg-background text-foreground font-sans antialiased min-h-screen selection:bg-stump-gold selection:text-ink;
   }
